@@ -5,12 +5,12 @@
 [自己动手写插件底层篇—基于jquery移动插件实现](http://www.cnblogs.com/st-leslie/p/6002148.html)  
 
 <b>配置说明：</b>  
-<code>{    
+<code>    
 	drag:true,    //用来指定作用的块是否可以移动   
     
-	moveObject:this&nbsp;&nbsp;&nbsp;&nbsp;//默认移动的对象和点击的对象相同，但是如果是特殊情况则需要触发的对象和移动的对象不相同  
+	moveObject:this  //默认移动的对象和点击的对象相同，但是如果是特殊情况则需要触发的对象和移动的对象不相同  
   	
-}</code>  
+</code>  
 上面参数的值为默认值，在使用的时候可以直接调用默认值，不需要传递参数
 
 <b>用法：</b>  
