@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jDrag使用案例</title>
+</head>
+<body>
+	<div style="margin-top: 100px;margin-left: 1000px;position: fixed;" class="button_group">
+		<button onclick="run()">运动</button>
+		<button onclick="stop()">停止</button>
+	</div>
+	<div id="test" style="margin-left: 100px;background:pink;width:80px;height:80px"></div>
+	<div id="test2" style="margin-left:200px;border:lightblue;width:150px;height:100px;">
+		<
+	</div>
+</body>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+<script type="text/javascript" src="jDrag.js"></script>
+<script type="text/javascript">
+	function run(){
+		$("#test").jDrag({drag:true});
+	}
+	function stop(){
+		$("#test").jDrag({drag:false});
+	}
+</script>
+</html>

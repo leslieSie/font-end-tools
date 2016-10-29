@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="model" style="margin-top: 100px;margin-left: 100px;background: lightblue;width:200px;height:100px">
+		<div id="test" style="width:100%;height:30px;background:pink"></div>
+	</div>
+</body>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+<script type="text/javascript" src="jDrag.js"></script>
+<script type="text/javascript">
+	$("#test").jDrag({drag:true,moveObject:".model"})
+</script>
+</html>
