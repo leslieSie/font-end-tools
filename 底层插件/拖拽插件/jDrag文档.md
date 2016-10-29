@@ -7,6 +7,7 @@
 <b>配置说明：</b>  
 <code>{    
 	drag:true,    //用来指定作用的块是否可以移动   
+    
 	moveObject:this&nbsp;&nbsp;&nbsp;&nbsp;//默认移动的对象和点击的对象相同，但是如果是特殊情况则需要触发的对象和移动的对象不相同  
   	
 }</code>  
