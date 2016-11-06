@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<!-- <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script> -->
+	<!-- <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+	<div id="test"></div>
+	<!-- <div id="test" style="margin-top: 100px;margin-left: 100px;width:600px;height:300px"></div> -->
+	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="jPage.js"></script>
+	<script type="text/javascript">
+		$("#test").page({count:70,pageSize:3,skipPart:true});
+		$(document).on("click",".pagination_search",function(){
+			//ajax内容
+		})
+	</script>
+</body>
+</html>
