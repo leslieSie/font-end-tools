@@ -93,7 +93,6 @@
 			}
 			$(that).html(html);
 			if(settings.skipPart==true){
-				var that_name=
 				$(that).find(".pagination").append('<span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">共有'+pageCount+'页</span><div style="display:inline-block" name="changePage"><span class="text-muted" style="margin:5px;margin-left:0px;display:inline-block;font-size:18px">,到第</span> <input type="number" min="1" max="'+pageCount+'"class="pagination_change_page" style="width:45px;border-color:#ddd"> <span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">页</span> <button class="btn btn-default btn-sm pagination_search">'+settings.btnName+'</button></div>');
 			}
 		}
