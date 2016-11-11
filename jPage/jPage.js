@@ -31,14 +31,17 @@
 			}
 			var showNum=parseInt(settings.showNum);
 			var pageJson=PageAlgorithm(pageNo,pageSize,pageCount,showNum);
-			console.log(pageJson);
+			//console.log(pageJson);
 			PageDraw(pageJson);
+			$(that).off();
 		};
 		main();
 
 		//按键触发
-		 $(that).delegate('.pagination li','click',function(){
+		 $(that).on('click','.pagination li',function(){
+		 	//alert(2);
 	        var num=$(this).attr("num");
+	        console.log("innerNum:"+num);
 			if($(this).attr("class")=="disabled"){
 				return false;
 			}
@@ -51,7 +54,8 @@
 				PageDraw(json);
 			}
 	    })
-		 $(that).delegate('.pagination_search','click',function(){
+		 $(that).on('click','.pagination_search',function(){
+		 	//alert(3);
 	        //输入为空不做处理
 			if($(that).find(".pagination_change_page").val()==""){
 				alert("跳转页码不能为空");
@@ -59,6 +63,7 @@
 				var num=parseInt($(that).find(".pagination_change_page").val());
 				var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
 				PageDraw(json);
+				return false;
 			}
 	    })
 
@@ -77,24 +82,29 @@
 
 		//分页渲染
 		function PageDraw(json){
-			var html='<ul class="pagination">';
-			for(var i in json.algorithm){
-				if(json.algorithm[i].status=="disabled"){
-					html+='<li class="'+json.algorithm[i].status+'" num="'+json.algorithm[i].num+'" ><a href="#">'+json.algorithm[i].text+'</a></li>';
+			if(parseInt(settings.count)>0){
+				var html='<ul class="pagination">';
+				for(var i in json.algorithm){
+					if(json.algorithm[i].status=="disabled"){
+						html+='<li class="'+json.algorithm[i].status+'" num="'+json.algorithm[i].num+'" ><a href="javascript:;">'+json.algorithm[i].text+'</a></li>';
+					}
+					else if(json.algorithm[i].status=="active"){
+						html+='<li class="'+json.algorithm[i].status+'" num="'+json.algorithm[i].num+'" ><a href="javascript:;">'+json.algorithm[i].text+'</a></li>';
+						
+					}else if(json.algorithm[i].num=="more"){
+						html+='<li class="disabled" num="'+json.algorithm[i].num+'" ><a href="javascript:;">'+json.algorithm[i].text+'</a></li>';
+					}else{
+						html+='<li num="'+json.algorithm[i].num+'" ><a href="javascript:;">'+json.algorithm[i].text+'</a></li>';
+					}
 				}
-				else if(json.algorithm[i].status=="active"){
-					html+='<li class="'+json.algorithm[i].status+'" num="'+json.algorithm[i].num+'" ><a href="#">'+json.algorithm[i].text+'</a></li>';
-					
-				}else if(json.algorithm[i].num=="more"){
-					html+='<li class="disabled" num="'+json.algorithm[i].num+'" ><a href="#">'+json.algorithm[i].text+'</a></li>';
-				}else{
-					html+='<li num="'+json.algorithm[i].num+'" ><a href="#">'+json.algorithm[i].text+'</a></li>';
+				$(that).html(html);
+				if(settings.skipPart==true){
+					$(that).find(".pagination").append('<span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">共有'+pageCount+'页/'+settings.count+'个</span><div style="display:inline-block" name="changePage"><span class="text-muted" style="margin:5px;margin-left:0px;display:inline-block;font-size:18px">,到第</span> <input type="number" min="1" max="'+pageCount+'"class="pagination_change_page" style="width:45px;border-color:#ddd"> <span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">页</span> <button class="btn btn-default btn-sm pagination_search">'+settings.btnName+'</button></div>');
 				}
+			}else{
+
 			}
-			$(that).html(html);
-			if(settings.skipPart==true){
-				$(that).find(".pagination").append('<span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">共有'+pageCount+'页/'+settings.count+'个</span><div style="display:inline-block" name="changePage"><span class="text-muted" style="margin:5px;margin-left:0px;display:inline-block;font-size:18px">,到第</span> <input type="number" min="1" max="'+pageCount+'"class="pagination_change_page" style="width:45px;border-color:#ddd"> <span class="text-muted" style="margin:5px;margin-left:10px;display:inline-block;font-size:18px">页</span> <button class="btn btn-default btn-sm pagination_search">'+settings.btnName+'</button></div>');
-			}
+			
 		}
 
 		//分页算法逻辑，主要对分页进行逻辑运算，不做渲染，返回值为JSON
