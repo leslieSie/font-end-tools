@@ -1,7 +1,7 @@
 (function($){
 	$.fn.page=function(options){
 		var defaultOptions={
-			pagNo:1,   //当前页码，用于点亮对应的页码
+			pageNo:1,   //当前页码，用于点亮对应的页码
 			pageSize:10,  //每页渲染的最大页码数
 			count:0,    //
 			showNum:6,  //初始化的显示页码，默认的是显示到6页
@@ -13,17 +13,16 @@
 		var that=this;
 		var settings=$.extend({},defaultOptions,options);
 		var pageCount=0;
+		$(this).empty();
 		//主函数
 		var main=function(){
 			var val=ValidatePageCount();
 			if(val==false){
 				return false;
 			}
-			var pageNo=parseInt(settings.pagNo);
+			var pageNo=parseInt(settings.pageNo);
 			var pageSize=parseInt(settings.pageSize);
 			var count=parseInt(settings.count);
-			
-			// console.log();
 			if(count%pageSize==0){
 				pageCount=count/pageSize;
 			}else{
@@ -31,41 +30,40 @@
 			}
 			var showNum=parseInt(settings.showNum);
 			var pageJson=PageAlgorithm(pageNo,pageSize,pageCount,showNum);
-			//console.log(pageJson);
 			PageDraw(pageJson);
 			$(that).off();
 		};
 		main();
 
 		//按键触发
-		 $(that).on('click','.pagination li',function(){
-		 	//alert(2);
-	        var num=$(this).attr("num");
-	        console.log("innerNum:"+num);
-			if($(this).attr("class")=="disabled"){
-				return false;
-			}
-			if(num==0 || num==(settings.count+1)){
+		 // $(document).on('click','.pagination li',function(e){
+		 // 	//alert(2);
+	  //       var num=$(this).attr("num");
+	  //       console.log("NUM:"+num);
+			// if($(this).attr("class")=="disabled"){
+			// 	return false;
+			// }
+			// if(num==0 || num==(settings.count+1)){
 
-			}else{
+			// }else{
+			// 	var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
+			// 	//console.log(json);
+			// 	PageDraw(json);
+			// 	$(".pagination li").off("click");
+			// }
+	  //   });
 
-				var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
-				//console.log(json);
-				PageDraw(json);
-			}
-	    })
-		 $(that).on('click','.pagination_search',function(){
-		 	//alert(3);
-	        //输入为空不做处理
-			if($(that).find(".pagination_change_page").val()==""){
-				alert("跳转页码不能为空");
-			}else{
-				var num=parseInt($(that).find(".pagination_change_page").val());
-				var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
-				PageDraw(json);
-				return false;
-			}
-	    })
+		 // $(document).on('click','.pagination_search',function(){
+		 // 	//alert(3);
+	  //       //输入为空不做处理
+			// if($(that).find(".pagination_change_page").val()==""){
+			// 	alert("跳转页码不能为空");
+			// }else{
+			// 	var num=parseInt($(that).find(".pagination_change_page").val());
+			// 	var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
+			// 	PageDraw(json);
+			// }
+	  //   });
 
 		//验证传入数据是否符合渲染规则
 		function ValidatePageCount(){

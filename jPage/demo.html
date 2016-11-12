@@ -11,12 +11,30 @@
 	<div id="test"></div>
 	<!-- <div id="test" style="margin-top: 100px;margin-left: 100px;width:600px;height:300px"></div> -->
 	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
-	<script type="text/javascript" src="jPage.js"></script>
+	<script type="text/javascript" src="jPage-1.1.js"></script>
 	<script type="text/javascript">
-		$("#test").page({count:70,pageSize:3,skipPart:true});
-		$(document).on("click",".pagination_search",function(){
-			//ajax内容
-		})
+		var count=12;
+		$("#test").page({count:12,pageSize:3,skipPart:true});
+		$(document).on('click','#test .pagination_search',function(){
+			if($(document).find("#test .pagination_change_page").val()==""){
+				alert("跳转页码不能为空");
+			}else{
+				var num=parseInt($(document).find("#test .pagination_change_page").val());
+				$("#test").page({count:12,pageNo:num,pageSize:3,skipPart:true});
+			}
+		});
+
+		$(document).on("click","#test .pagination li",function(){
+			var num=$(this).attr("num");
+			if($(this).attr("class")=="disabled"){
+				return false;
+			}
+			if(num==0 || num==(count+1)){
+
+			}else{
+				$("#test").page({count:12,pageNo:num,pageSize:3,skipPart:true});
+			}
+		});
 	</script>
 </body>
 </html>
