@@ -38,12 +38,26 @@ showNum:这个参数主要是用来设定默认分页插件的显示页码数的
 这款插件目前没有在内部实现ajax的交互方式，但是我们可以通过在外添加事件绑定来实现这个需求  
 例如：要为确定按钮添加一个ajax事件我们可以这样做  
   
-	<script type="text/javascript">
-	$("#test").page({count:70,pageSize:3,skipPart:true});
-	$(document).on("click",".pagination_search",function(){
-		//ajax内容
-	})
-	</script>  
+	$(document).on('click','#test .pagination_search',function(){
+			if($(document).find("#test .pagination_change_page").val()==""){
+				alert("跳转页码不能为空");
+			}else{
+				var num=parseInt($(document).find("#test .pagination_change_page").val());
+				$("#test").page({count:12,pageNo:num,pageSize:3,skipPart:true});
+			}
+		});
+
+		$(document).on("click","#test .pagination li",function(){
+			var num=$(this).attr("num");
+			if($(this).attr("class")=="disabled"){
+				return false;
+			}
+			if(num==0 || num==(count+1)){
+
+			}else{
+				$("#test").page({count:12,pageNo:num,pageSize:3,skipPart:true});
+			}
+		});
 这样我们就实现了ajax交互的功能  
   
 *. 其他的设计思路详见：http://www.cnblogs.com/st-leslie/p/6029804.html
