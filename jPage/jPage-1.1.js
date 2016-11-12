@@ -35,36 +35,6 @@
 		};
 		main();
 
-		//按键触发
-		 // $(document).on('click','.pagination li',function(e){
-		 // 	//alert(2);
-	  //       var num=$(this).attr("num");
-	  //       console.log("NUM:"+num);
-			// if($(this).attr("class")=="disabled"){
-			// 	return false;
-			// }
-			// if(num==0 || num==(settings.count+1)){
-
-			// }else{
-			// 	var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
-			// 	//console.log(json);
-			// 	PageDraw(json);
-			// 	$(".pagination li").off("click");
-			// }
-	  //   });
-
-		 // $(document).on('click','.pagination_search',function(){
-		 // 	//alert(3);
-	  //       //输入为空不做处理
-			// if($(that).find(".pagination_change_page").val()==""){
-			// 	alert("跳转页码不能为空");
-			// }else{
-			// 	var num=parseInt($(that).find(".pagination_change_page").val());
-			// 	var json=PageAlgorithm(parseInt(num),settings.pageSize,pageCount,settings.showNum);
-			// 	PageDraw(json);
-			// }
-	  //   });
-
 		//验证传入数据是否符合渲染规则
 		function ValidatePageCount(){
 			if(settings.pagNo<0 || settings.pageSize<0 || settings.count<0){
