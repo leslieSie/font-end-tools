@@ -24,8 +24,8 @@ $.fn.jDrag=function(options){
 		var e=e||window.event;
 		mouseX=e.clientX;
 		mouseY=e.clientY;
-		ElementX=$(this).offset().left;
-		ElementY=$(this).offset().top;
+		ElementX=$(this).position().left;
+		ElementY=$(this).position().top;
 		if(settings.drag==true){
 			status=true;
 		}
