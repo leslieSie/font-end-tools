@@ -21,14 +21,6 @@ $.fn.multSideBar=function(options){
 		//用于设置显示
 		show:{
 			data:[
-			// {
-			// 	icon:"weixin",   //weixin,qq,facebook,taobao，zhifubao,weibo
-			// 	type:"hollow",   //可选参数有hollow,solid
-			// 	text:"",		 //自定义显示的字段，默认字段为空
-			// 	noCustom:false,  //自定义类型，只有在custom为true的时候，customUrl才有效
-			// 	customUrl:"",    //图片的URL
-			// 	click:"",        //点击后的效果    
-			// }
 			]
 		}
 	};
