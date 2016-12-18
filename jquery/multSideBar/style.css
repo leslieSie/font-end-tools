@@ -1,0 +1,36 @@
+*{margin:0;padding:0;list-style-type:none;}
+.msb-side{
+	position: fixed;
+	width: 54px;
+	top:200px;
+	height:275px;
+}
+
+.msb-side ul li{
+	width:54px;
+	height:54px;
+	float:left;
+	position:relative;
+	border-bottom:1px solid #444;
+}
+
+.msb-side ul li .sidebox{
+	position:absolute;
+	width:54px;
+	height:54px;
+	top:0;
+	right:0;
+	transition:all .3s;
+	opacity:0.8;
+	filter:Alpha(opacity=80);
+	color:#fff;
+	font:14px/54px "微软雅黑";
+	overflow:hidden;
+}
+
+.r0{
+	right:0px;
+}
+.l0{
+	left:0px;
+}
